@@ -8,6 +8,12 @@ const Contact = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    if (!import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
+      console.error('Web3Forms access key is missing.')
+      setStatus('config-error')
+      return
+    }
+
     if (!captchaToken) {
       setStatus('captcha')
       return
@@ -18,6 +24,7 @@ const Contact = () => {
     const form = event.currentTarget
     const formData = new FormData(form)
 
+    // Web3Forms configuration
     formData.append(
       'access_key',
       import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
@@ -33,7 +40,8 @@ const Contact = () => {
       'Akshat Sharma Portfolio'
     )
 
-    formData.append(
+    // hCaptcha response
+    formData.set(
       'h-captcha-response',
       captchaToken
     )
@@ -56,12 +64,20 @@ const Contact = () => {
         setCaptchaToken('')
         form.reset()
       } else {
-        console.error('Web3Forms error:', data)
+        console.error(
+          'Web3Forms rejected the submission:',
+          data
+        )
+
         setStatus('error')
       }
     } catch (error) {
-      console.error('Form submission error:', error)
-      setStatus('error')
+      console.error(
+        'Network error while submitting form:',
+        error
+      )
+
+      setStatus('network-error')
     }
   }
 
@@ -87,8 +103,6 @@ const Contact = () => {
         className="pointer-events-none absolute inset-0"
       >
 
-        {/* Orange ambient glow */}
-
         <div
           className="
             absolute
@@ -102,8 +116,6 @@ const Contact = () => {
             blur-[120px]
           "
         />
-
-        {/* Subtle grid */}
 
         <div
           className="
@@ -124,7 +136,7 @@ const Contact = () => {
       <div className="relative mx-auto max-w-6xl">
 
         {/* =======================================================
-            SECTION HEADER
+            HEADER
         ======================================================== */}
 
         <div className="mb-14 max-w-2xl">
@@ -136,13 +148,15 @@ const Contact = () => {
               className="h-px w-8 bg-orange-500"
             />
 
-            <p className="
-              text-[10px]
-              font-semibold
-              uppercase
-              tracking-[0.3em]
-              text-orange-500
-            ">
+            <p
+              className="
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-[0.3em]
+                text-orange-500
+              "
+            >
               Contact
             </p>
 
@@ -167,14 +181,16 @@ const Contact = () => {
           </h2>
 
 
-          <p className="
-            mt-5
-            max-w-xl
-            text-sm
-            leading-7
-            text-zinc-500
-            sm:text-base
-          ">
+          <p
+            className="
+              mt-5
+              max-w-xl
+              text-sm
+              leading-7
+              text-zinc-500
+              sm:text-base
+            "
+          >
             Have a project, idea, or opportunity in mind?
             Send me a message and I'll get back to you.
           </p>
@@ -183,67 +199,76 @@ const Contact = () => {
 
 
         {/* =======================================================
-            CONTACT GRID
+            CONTACT AREA
         ======================================================== */}
 
-        <div className="
-          grid
-          gap-6
-          lg:grid-cols-[0.85fr_1.15fr]
-          lg:gap-10
-        ">
-
+        <div
+          className="
+            grid
+            gap-6
+            lg:grid-cols-[0.85fr_1.15fr]
+            lg:gap-10
+          "
+        >
 
           {/* =====================================================
-              LEFT — CONTACT INFORMATION
+              CONTACT INFORMATION
           ====================================================== */}
 
-          <div className="
-            flex
-            flex-col
-            justify-between
-            rounded-2xl
-            border
-            border-white/[0.07]
-            bg-white/[0.015]
-            p-6
-            sm:p-8
-          ">
+          <div
+            className="
+              flex
+              flex-col
+              justify-between
+              rounded-2xl
+              border
+              border-white/[0.07]
+              bg-white/[0.015]
+              p-6
+              sm:p-8
+            "
+          >
 
             <div>
 
-              <p className="
-                text-xs
-                font-medium
-                uppercase
-                tracking-[0.2em]
-                text-zinc-600
-              ">
+              <p
+                className="
+                  text-xs
+                  font-medium
+                  uppercase
+                  tracking-[0.2em]
+                  text-zinc-600
+                "
+              >
                 Get in touch
               </p>
 
 
-              <h3 className="
-                mt-4
-                max-w-sm
-                text-2xl
-                font-semibold
-                tracking-tight
-                text-neutral-100
-              ">
+              <h3
+                className="
+                  mt-4
+                  max-w-sm
+                  text-2xl
+                  font-semibold
+                  tracking-tight
+                  text-neutral-100
+                "
+              >
                 Have an idea?
                 <br />
                 Let's talk.
               </h3>
 
 
-              <p className="
-                mt-4
-                max-w-sm
-                text-sm
-                leading-7
-                text-zinc-500
-              ">
+              <p
+                className="
+                  mt-4
+                  max-w-sm
+                  text-sm
+                  leading-7
+                  text-zinc-500
+                "
+              >
                 I'm open to freelance projects, collaborations,
                 and opportunities where I can contribute through
                 frontend development and UI engineering.
@@ -269,28 +294,32 @@ const Contact = () => {
                 "
               >
 
-                <span className="
-                  block
-                  text-[10px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-zinc-600
-                ">
+                <span
+                  className="
+                    block
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+                    text-zinc-600
+                  "
+                >
                   Email
                 </span>
 
-                <span className="
-                  mt-2
-                  block
-                  break-all
-                  text-sm
-                  text-zinc-300
-                  transition-colors
-                  duration-300
-                  group-hover:text-orange-500
-                  sm:break-normal
-                ">
+                <span
+                  className="
+                    mt-2
+                    block
+                    break-all
+                    text-sm
+                    text-zinc-300
+                    transition-colors
+                    duration-300
+                    group-hover:text-orange-500
+                    sm:break-normal
+                  "
+                >
                   official.akshatsharma04@gmail.com
                 </span>
 
@@ -312,26 +341,30 @@ const Contact = () => {
                 "
               >
 
-                <span className="
-                  block
-                  text-[10px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-zinc-600
-                ">
+                <span
+                  className="
+                    block
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+                    text-zinc-600
+                  "
+                >
                   WhatsApp
                 </span>
 
-                <span className="
-                  mt-2
-                  block
-                  text-sm
-                  text-zinc-300
-                  transition-colors
-                  duration-300
-                  group-hover:text-orange-500
-                ">
+                <span
+                  className="
+                    mt-2
+                    block
+                    text-sm
+                    text-zinc-300
+                    transition-colors
+                    duration-300
+                    group-hover:text-orange-500
+                  "
+                >
                   +91 75586 10318
                 </span>
 
@@ -350,29 +383,34 @@ const Contact = () => {
                 "
               >
 
-                <span className="
-                  block
-                  text-[10px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.2em]
-                  text-zinc-600
-                ">
+                <span
+                  className="
+                    block
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+                    text-zinc-600
+                  "
+                >
                   LinkedIn
                 </span>
 
-                <span className="
-                  mt-2
-                  inline-flex
-                  items-center
-                  gap-2
-                  text-sm
-                  text-zinc-300
-                  transition-colors
-                  duration-300
-                  group-hover:text-orange-500
-                ">
+                <span
+                  className="
+                    mt-2
+                    inline-flex
+                    items-center
+                    gap-2
+                    text-sm
+                    text-zinc-300
+                    transition-colors
+                    duration-300
+                    group-hover:text-orange-500
+                  "
+                >
                   Connect with me
+
                   <span
                     aria-hidden="true"
                     className="
@@ -383,6 +421,7 @@ const Contact = () => {
                   >
                     ↗
                   </span>
+
                 </span>
 
               </a>
@@ -393,17 +432,19 @@ const Contact = () => {
 
 
           {/* =====================================================
-              RIGHT — CONTACT FORM
+              FORM
           ====================================================== */}
 
-          <div className="
-            rounded-2xl
-            border
-            border-white/[0.07]
-            bg-white/[0.02]
-            p-6
-            sm:p-8
-          ">
+          <div
+            className="
+              rounded-2xl
+              border
+              border-white/[0.07]
+              bg-white/[0.02]
+              p-6
+              sm:p-8
+            "
+          >
 
             <form
               onSubmit={handleSubmit}
@@ -426,7 +467,7 @@ const Contact = () => {
               <div>
 
                 <label
-                  htmlFor="name"
+                  htmlFor="contact-name"
                   className="
                     mb-2
                     block
@@ -439,7 +480,7 @@ const Contact = () => {
                 </label>
 
                 <input
-                  id="name"
+                  id="contact-name"
                   type="text"
                   name="name"
                   placeholder="Your name"
@@ -474,7 +515,7 @@ const Contact = () => {
               <div>
 
                 <label
-                  htmlFor="email"
+                  htmlFor="contact-email"
                   className="
                     mb-2
                     block
@@ -487,7 +528,7 @@ const Contact = () => {
                 </label>
 
                 <input
-                  id="email"
+                  id="contact-email"
                   type="email"
                   name="email"
                   placeholder="you@example.com"
@@ -522,7 +563,7 @@ const Contact = () => {
               <div>
 
                 <label
-                  htmlFor="message"
+                  htmlFor="contact-message"
                   className="
                     mb-2
                     block
@@ -535,7 +576,7 @@ const Contact = () => {
                 </label>
 
                 <textarea
-                  id="message"
+                  id="contact-message"
                   name="message"
                   rows="6"
                   placeholder="Tell me a little about your project..."
@@ -566,15 +607,19 @@ const Contact = () => {
               </div>
 
 
-              {/* CAPTCHA */}
+              {/* =================================================
+                  CAPTCHA
+              ================================================== */}
 
-              <div className="
-                flex
-                justify-center
-                overflow-hidden
-                rounded-xl
-                sm:justify-start
-              ">
+              <div
+                className="
+                  flex
+                  justify-center
+                  overflow-hidden
+                  rounded-xl
+                  sm:justify-start
+                "
+              >
 
                 <HCaptcha
                   sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
@@ -586,24 +631,115 @@ const Contact = () => {
                   onExpire={() => {
                     setCaptchaToken('')
                   }}
+                  onError={() => {
+                    setCaptchaToken('')
+                    setStatus('captcha')
+                  }}
                 />
 
               </div>
 
 
-              {/* CAPTCHA error */}
+              {/* =================================================
+                  STATUS
+              ================================================== */}
 
               {status === 'captcha' && (
-                <p className="
-                  text-xs
-                  text-orange-500
-                ">
+                <div
+                  className="
+                    rounded-xl
+                    border
+                    border-orange-500/20
+                    bg-orange-500/[0.04]
+                    px-4
+                    py-3
+                    text-xs
+                    text-orange-400
+                  "
+                >
                   Please complete the CAPTCHA before sending your message.
-                </p>
+                </div>
               )}
 
 
-              {/* Submit */}
+              {status === 'config-error' && (
+                <div
+                  className="
+                    rounded-xl
+                    border
+                    border-red-500/20
+                    bg-red-500/[0.04]
+                    px-4
+                    py-3
+                    text-xs
+                    text-red-400
+                  "
+                >
+                  The contact form is not configured correctly yet.
+                  Please try again later.
+                </div>
+              )}
+
+
+              {status === 'success' && (
+                <div
+                  className="
+                    rounded-xl
+                    border
+                    border-emerald-500/20
+                    bg-emerald-500/[0.04]
+                    px-4
+                    py-3
+                    text-sm
+                    text-emerald-400
+                  "
+                >
+                  Message sent successfully. I'll get back to you soon.
+                </div>
+              )}
+
+
+              {status === 'error' && (
+                <div
+                  className="
+                    rounded-xl
+                    border
+                    border-red-500/20
+                    bg-red-500/[0.04]
+                    px-4
+                    py-3
+                    text-sm
+                    text-red-400
+                  "
+                >
+                  Web3Forms rejected the message. Please check your
+                  Web3Forms configuration and try again.
+                </div>
+              )}
+
+
+              {status === 'network-error' && (
+                <div
+                  className="
+                    rounded-xl
+                    border
+                    border-red-500/20
+                    bg-red-500/[0.04]
+                    px-4
+                    py-3
+                    text-sm
+                    text-red-400
+                  "
+                >
+                  Couldn't connect to the email service. Please check
+                  your internet connection and try again.
+                </div>
+              )}
+
+
+              {/* =================================================
+                  SUBMIT BUTTON
+              ================================================== */}
 
               <button
                 type="submit"
@@ -674,41 +810,9 @@ const Contact = () => {
               </button>
 
 
-              {/* Success */}
-
-              {status === 'success' && (
-                <div className="
-                  rounded-xl
-                  border
-                  border-emerald-500/20
-                  bg-emerald-500/[0.04]
-                  px-4
-                  py-3
-                  text-sm
-                  text-emerald-400
-                ">
-                  Message sent successfully. I'll get back to you soon.
-                </div>
-              )}
-
-
-              {/* Error */}
-
-              {status === 'error' && (
-                <div className="
-                  rounded-xl
-                  border
-                  border-red-500/20
-                  bg-red-500/[0.04]
-                  px-4
-                  py-3
-                  text-sm
-                  text-red-400
-                ">
-                  Something went wrong while sending your message.
-                  Please try again or contact me directly by email.
-                </div>
-              )}
+              <p className="text-center text-[10px] text-zinc-700">
+                Your message will be sent securely.
+              </p>
 
             </form>
 

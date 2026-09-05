@@ -70,48 +70,91 @@ const Contact = () => {
       id="contact"
       aria-labelledby="contact-heading"
       className="
-        relative overflow-hidden
+        relative
+        overflow-hidden
         bg-body-bg
-        px-6 py-24
-        sm:px-8 sm:py-28
-        lg:py-32
+        px-6
+        py-24
+        sm:px-8
+        sm:py-28
+        lg:py-36
       "
     >
 
       {/* =========================================================
-          BACKGROUND
+          BACKGROUND ATMOSPHERE
       ========================================================== */}
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+        "
       >
 
-        {/* Ambient glow */}
+        {/* Main glow */}
 
         <div
+          data-aos="fade"
+          data-aos-duration="1800"
           className="
             absolute
-            left-1/2
-            top-1/3
-            h-96
-            w-96
-            -translate-x-1/2
+            left-[20%]
+            top-[25%]
+            h-80
+            w-80
             rounded-full
-            bg-orange-500/[0.035]
+            bg-orange-500/[0.025]
+            blur-[130px]
+          "
+        />
+
+        {/* Secondary glow */}
+
+        <div
+          data-aos="fade"
+          data-aos-duration="2200"
+          data-aos-delay="250"
+          className="
+            absolute
+            bottom-[10%]
+            right-[5%]
+            h-72
+            w-72
+            rounded-full
+            bg-orange-500/[0.015]
             blur-[120px]
           "
         />
 
-        {/* Dot texture */}
+        {/* Dot grid */}
 
         <div
+          data-aos="fade"
+          data-aos-duration="2500"
           className="
             absolute
             inset-0
             bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.035)_1px,transparent_1px)]
-            [background-size:32px_32px]
-            opacity-20
+            [background-size:36px_36px]
+            opacity-15
+          "
+        />
+
+        {/* Top fade */}
+
+        <div
+          aria-hidden="true"
+          className="
+            absolute
+            inset-x-0
+            top-0
+            h-32
+            bg-gradient-to-b
+            from-body-bg
+            to-transparent
           "
         />
 
@@ -119,24 +162,41 @@ const Contact = () => {
 
 
       {/* =========================================================
-          CONTENT
+          MAIN CONTAINER
       ========================================================== */}
 
       <div className="relative mx-auto max-w-6xl">
+
 
         {/* =======================================================
             HEADER
         ======================================================== */}
 
-        <div className="mb-14 max-w-2xl">
+        <div className="max-w-3xl">
 
-          {/* Section label */}
+          {/* Label */}
 
-          <div className="mb-5 flex items-center gap-3">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            data-aos-offset="100"
+            className="
+              mb-6
+              flex
+              items-center
+              gap-3
+            "
+          >
 
             <span
               aria-hidden="true"
-              className="h-px w-8 bg-orange-500"
+              className="
+                h-px
+                w-8
+                origin-left
+                bg-orange-500
+                sm:w-10
+              "
             />
 
             <p
@@ -158,27 +218,39 @@ const Contact = () => {
 
           <h2
             id="contact-heading"
+            data-aos="fade-up"
+            data-aos-duration="900"
+            data-aos-delay="100"
+            data-aos-offset="100"
             className="
-              text-3xl
+              max-w-3xl
+              text-4xl
               font-semibold
-              tracking-[-0.03em]
+              leading-[0.98]
+              tracking-[-0.045em]
               text-neutral-100
-              sm:text-4xl
-              md:text-5xl
+              sm:text-5xl
+              md:text-6xl
             "
           >
             Let's build something
-            <span className="text-zinc-500">
+
+            <span className="text-zinc-600">
               {' '}worth shipping.
             </span>
+
           </h2>
 
 
-          {/* Description */}
+          {/* Header description */}
 
           <p
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="250"
+            data-aos-offset="100"
             className="
-              mt-5
+              mt-6
               max-w-xl
               text-sm
               leading-7
@@ -187,239 +259,477 @@ const Contact = () => {
             "
           >
             Have a project, idea, or opportunity in mind?
-            Send me a message and I'll get back to you.
+            Tell me what you're working on and let's figure
+            out how I can help bring it to life.
           </p>
 
         </div>
 
 
         {/* =======================================================
-            CONTACT AREA
+            CONTACT GRID
         ======================================================== */}
 
         <div
           className="
+            mt-16
             grid
             gap-6
-            lg:grid-cols-[0.85fr_1.15fr]
-            lg:gap-10
+            lg:grid-cols-[0.8fr_1.2fr]
+            lg:gap-8
+            xl:gap-10
           "
         >
 
+
           {/* =====================================================
-              CONTACT INFORMATION
+              LEFT — CONTACT INFO
           ====================================================== */}
 
           <div
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="150"
+            data-aos-offset="120"
             className="
+              relative
               flex
+              min-h-full
               flex-col
-              justify-between
+              overflow-hidden
               rounded-2xl
               border
               border-white/[0.07]
               bg-white/[0.015]
               p-6
               sm:p-8
+              lg:p-9
             "
           >
 
-            <div>
+            {/* Card glow */}
 
-              <p
-                className="
-                  text-xs
-                  font-medium
-                  uppercase
-                  tracking-[0.2em]
-                  text-zinc-600
-                "
-              >
-                Get in touch
-              </p>
-
-
-              <h3
-                className="
-                  mt-4
-                  max-w-sm
-                  text-2xl
-                  font-semibold
-                  tracking-tight
-                  text-neutral-100
-                "
-              >
-                Have an idea?
-                <br />
-                Let's talk.
-              </h3>
+            <div
+              aria-hidden="true"
+              className="
+                pointer-events-none
+                absolute
+                -right-24
+                -top-24
+                h-56
+                w-56
+                rounded-full
+                bg-orange-500/[0.025]
+                blur-[80px]
+                transition-opacity
+                duration-500
+                group-hover:opacity-100
+              "
+            />
 
 
-              <p
-                className="
-                  mt-4
-                  max-w-sm
-                  text-sm
-                  leading-7
-                  text-zinc-500
-                "
-              >
-                I'm open to freelance projects, collaborations,
-                and opportunities where I can contribute through
-                frontend development and UI engineering.
-              </p>
+            {/* =================================================
+                INTRO
+            ================================================== */}
 
-            </div>
+            <div className="relative">
 
-
-            {/* Contact details */}
-
-            <div className="mt-10 space-y-5">
-
-              {/* Email */}
-
-              <a
-                href="mailto:work.akshatsharma04@gmail.com"
-                className="
-                  group
-                  block
-                  border-b
-                  border-white/[0.06]
-                  pb-5
-                "
+              <div
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="300"
               >
 
-                <span
+                <p
                   className="
-                    block
-                    text-[10px]
+                    text-[9px]
                     font-semibold
                     uppercase
-                    tracking-[0.2em]
+                    tracking-[0.25em]
                     text-zinc-600
                   "
                 >
-                  Email
+                  Get in touch
+                </p>
+
+
+                <h3
+                  className="
+                    mt-4
+                    max-w-sm
+                    text-2xl
+                    font-semibold
+                    leading-tight
+                    tracking-[-0.025em]
+                    text-neutral-100
+                    sm:text-3xl
+                  "
+                >
+                  Have an idea?
+
+                  <span className="text-zinc-600">
+                    {' '}Let's talk.
+                  </span>
+
+                </h3>
+
+
+                <p
+                  className="
+                    mt-5
+                    max-w-sm
+                    text-sm
+                    leading-7
+                    text-zinc-500
+                  "
+                >
+                  I'm open to freelance projects,
+                  collaborations, and opportunities where
+                  I can contribute through frontend
+                  development and UI engineering.
+                </p>
+
+              </div>
+
+
+              {/* =================================================
+                  AVAILABILITY
+              ================================================== */}
+
+              <div
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="400"
+                className="
+                  mt-7
+                  inline-flex
+                  items-center
+                  gap-2.5
+                  rounded-full
+                  border
+                  border-white/[0.07]
+                  bg-white/[0.02]
+                  px-3.5
+                  py-2
+                "
+              >
+
+                <span className="relative flex h-1.5 w-1.5">
+
+                  <span
+                    className="
+                      absolute
+                      inline-flex
+                      h-full
+                      w-full
+                      animate-ping
+                      rounded-full
+                      bg-orange-500
+                      opacity-50
+                    "
+                  />
+
+                  <span
+                    className="
+                      relative
+                      inline-flex
+                      h-1.5
+                      w-1.5
+                      rounded-full
+                      bg-orange-500
+                    "
+                  />
+
                 </span>
 
                 <span
                   className="
-                    mt-2
-                    block
-                    break-all
-                    text-sm
-                    text-zinc-300
-                    transition-colors
-                    duration-300
-                    group-hover:text-orange-500
-                    sm:break-normal
+                    text-[10px]
+                    font-medium
+                    text-zinc-500
                   "
                 >
-                  work.akshatsharma04@gmail.com
+                  Open to opportunities
+                </span>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                CONTACT METHODS
+            ================================================== */}
+
+            <div className="relative mt-12 space-y-1">
+
+
+              {/* EMAIL */}
+
+              <a
+                href="mailto:work.akshatsharma04@gmail.com"
+                data-aos="fade-up"
+                data-aos-duration="650"
+                data-aos-delay="450"
+                className="
+                  group
+                  flex
+                  items-center
+                  justify-between
+                  rounded-xl
+                  border
+                  border-transparent
+                  px-3
+                  py-4
+                  transition-all
+                  duration-300
+                  hover:border-white/[0.06]
+                  hover:bg-white/[0.025]
+                "
+              >
+
+                <div>
+
+                  <span
+                    className="
+                      block
+                      text-[9px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-zinc-600
+                    "
+                  >
+                    Email
+                  </span>
+
+                  <span
+                    className="
+                      mt-1.5
+                      block
+                      break-all
+                      text-sm
+                      text-zinc-300
+                      transition-colors
+                      duration-300
+                      group-hover:text-orange-500
+                      sm:break-normal
+                    "
+                  >
+                    work.akshatsharma04@gmail.com
+                  </span>
+
+                </div>
+
+                <span
+                  aria-hidden="true"
+                  className="
+                    ml-4
+                    text-zinc-700
+                    transition-all
+                    duration-300
+                    group-hover:translate-x-1
+                    group-hover:text-orange-500
+                  "
+                >
+                  ↗
                 </span>
 
               </a>
 
 
-              {/* WhatsApp */}
+              {/* WHATSAPP */}
 
               <a
                 href="https://wa.me/917558610318"
                 target="_blank"
                 rel="noreferrer"
+                data-aos="fade-up"
+                data-aos-duration="650"
+                data-aos-delay="550"
                 className="
                   group
-                  block
-                  border-b
-                  border-white/[0.06]
-                  pb-5
+                  flex
+                  items-center
+                  justify-between
+                  rounded-xl
+                  border
+                  border-transparent
+                  px-3
+                  py-4
+                  transition-all
+                  duration-300
+                  hover:border-white/[0.06]
+                  hover:bg-white/[0.025]
                 "
               >
 
-                <span
-                  className="
-                    block
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.2em]
-                    text-zinc-600
-                  "
-                >
-                  WhatsApp
-                </span>
+                <div>
+
+                  <span
+                    className="
+                      block
+                      text-[9px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-zinc-600
+                    "
+                  >
+                    WhatsApp
+                  </span>
+
+                  <span
+                    className="
+                      mt-1.5
+                      block
+                      text-sm
+                      text-zinc-300
+                      transition-colors
+                      duration-300
+                      group-hover:text-orange-500
+                    "
+                  >
+                    +91 75586 10318
+                  </span>
+
+                </div>
 
                 <span
+                  aria-hidden="true"
                   className="
-                    mt-2
-                    block
-                    text-sm
-                    text-zinc-300
-                    transition-colors
+                    ml-4
+                    text-zinc-700
+                    transition-all
                     duration-300
+                    group-hover:translate-x-1
                     group-hover:text-orange-500
                   "
                 >
-                  +91 75586 10318
+                  ↗
                 </span>
 
               </a>
 
 
-              {/* LinkedIn */}
+              {/* LINKEDIN */}
 
               <a
                 href="https://www.linkedin.com/in/akshatgsharma/"
                 target="_blank"
                 rel="noreferrer"
+                data-aos="fade-up"
+                data-aos-duration="650"
+                data-aos-delay="650"
                 className="
                   group
-                  block
+                  flex
+                  items-center
+                  justify-between
+                  rounded-xl
+                  border
+                  border-transparent
+                  px-3
+                  py-4
+                  transition-all
+                  duration-300
+                  hover:border-white/[0.06]
+                  hover:bg-white/[0.025]
                 "
               >
 
-                <span
-                  className="
-                    block
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.2em]
-                    text-zinc-600
-                  "
-                >
-                  LinkedIn
-                </span>
+                <div>
+
+                  <span
+                    className="
+                      block
+                      text-[9px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-zinc-600
+                    "
+                  >
+                    LinkedIn
+                  </span>
+
+                  <span
+                    className="
+                      mt-1.5
+                      block
+                      text-sm
+                      text-zinc-300
+                      transition-colors
+                      duration-300
+                      group-hover:text-orange-500
+                    "
+                  >
+                    Connect with me
+                  </span>
+
+                </div>
 
                 <span
+                  aria-hidden="true"
                   className="
-                    mt-2
-                    inline-flex
-                    items-center
-                    gap-2
-                    text-sm
-                    text-zinc-300
-                    transition-colors
+                    ml-4
+                    text-zinc-700
+                    transition-all
                     duration-300
+                    group-hover:translate-x-1
                     group-hover:text-orange-500
                   "
                 >
-                  Connect with me
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  >
-                    ↗
-                  </span>
-
+                  ↗
                 </span>
 
               </a>
+
+            </div>
+
+
+            {/* =================================================
+                CARD FOOTER
+            ================================================== */}
+
+            <div
+              data-aos="fade-up"
+              data-aos-duration="650"
+              data-aos-delay="750"
+              className="
+                relative
+                mt-auto
+                border-t
+                border-white/[0.06]
+                pt-6
+              "
+            >
+
+              <div className="flex items-center justify-between">
+
+                <span
+                  className="
+                    text-[9px]
+                    uppercase
+                    tracking-[0.2em]
+                    text-zinc-700
+                  "
+                >
+                  Based in India
+                </span>
+
+                <span
+                  className="
+                    font-mono
+                    text-[9px]
+                    tracking-[0.15em]
+                    text-orange-500/40
+                  "
+                >
+                  AVAILABLE
+                </span>
+
+              </div>
 
             </div>
 
@@ -427,121 +737,231 @@ const Contact = () => {
 
 
           {/* =====================================================
-              FORM
+              RIGHT — MESSAGE FORM
           ====================================================== */}
 
           <div
+            data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-delay="250"
+            data-aos-offset="120"
             className="
+              relative
+              overflow-hidden
               rounded-2xl
               border
-              border-white/[0.07]
+              border-white/[0.08]
               bg-white/[0.02]
               p-6
               sm:p-8
+              lg:p-9
             "
           >
 
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-5"
+            {/* Form accent */}
+
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                left-0
+                top-0
+                h-px
+                w-24
+                bg-orange-500/70
+              "
+            />
+
+            <div
+              aria-hidden="true"
+              className="
+                absolute
+                right-0
+                top-0
+                h-px
+                w-12
+                bg-white/[0.06]
+              "
+            />
+
+
+            {/* =================================================
+                FORM HEADER
+            ================================================== */}
+
+            <div
+              data-aos="fade-up"
+              data-aos-duration="700"
+              data-aos-delay="400"
             >
 
-              {/* =================================================
-                  NAME
-              ================================================== */}
+              <div className="flex items-center justify-between">
 
-              <div>
-
-                <label
-                  htmlFor="contact-name"
+                <p
                   className="
-                    mb-2
-                    block
-                    text-xs
-                    font-medium
-                    text-zinc-400
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.25em]
+                    text-zinc-600
                   "
                 >
-                  Name
-                </label>
+                  Send a message
+                </p>
 
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  autoComplete="name"
+                <span
                   className="
-                    w-full
-                    rounded-xl
-                    border
-                    border-white/[0.08]
-                    bg-white/[0.025]
-                    px-4
-                    py-3
-                    text-sm
-                    text-white
-                    outline-none
-                    placeholder:text-zinc-700
-                    transition-all
-                    duration-300
-                    focus:border-orange-500/50
-                    focus:bg-white/[0.035]
-                    focus:ring-2
-                    focus:ring-orange-500/10
+                    font-mono
+                    text-[9px]
+                    tracking-[0.15em]
+                    text-zinc-700
                   "
-                />
+                >
+                  01 / 01
+                </span>
 
               </div>
 
 
+              <h3
+                className="
+                  mt-4
+                  text-2xl
+                  font-semibold
+                  tracking-tight
+                  text-neutral-100
+                  sm:text-3xl
+                "
+              >
+                Start a conversation.
+              </h3>
+
+            </div>
+
+
+            {/* =================================================
+                FORM
+            ================================================== */}
+
+            <form
+              onSubmit={handleSubmit}
+              className="mt-8 space-y-5"
+            >
+
               {/* =================================================
-                  EMAIL
+                  NAME + EMAIL
               ================================================== */}
 
-              <div>
+              <div className="grid gap-5 sm:grid-cols-2">
 
-                <label
-                  htmlFor="contact-email"
-                  className="
-                    mb-2
-                    block
-                    text-xs
-                    font-medium
-                    text-zinc-400
-                  "
+                {/* NAME */}
+
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="650"
+                  data-aos-delay="450"
                 >
-                  Email
-                </label>
 
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  placeholder="you@example.com"
-                  required
-                  autoComplete="email"
-                  className="
-                    w-full
-                    rounded-xl
-                    border
-                    border-white/[0.08]
-                    bg-white/[0.025]
-                    px-4
-                    py-3
-                    text-sm
-                    text-white
-                    outline-none
-                    placeholder:text-zinc-700
-                    transition-all
-                    duration-300
-                    focus:border-orange-500/50
-                    focus:bg-white/[0.035]
-                    focus:ring-2
-                    focus:ring-orange-500/10
-                  "
-                />
+                  <label
+                    htmlFor="contact-name"
+                    className="
+                      mb-2
+                      block
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.15em]
+                      text-zinc-600
+                    "
+                  >
+                    Name
+                  </label>
+
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                    autoComplete="name"
+                    className="
+                      w-full
+                      rounded-xl
+                      border
+                      border-white/[0.08]
+                      bg-black/10
+                      px-4
+                      py-3.5
+                      text-sm
+                      text-white
+                      outline-none
+                      placeholder:text-zinc-700
+                      transition-all
+                      duration-300
+                      hover:border-white/[0.12]
+                      focus:border-orange-500/50
+                      focus:bg-white/[0.025]
+                      focus:ring-2
+                      focus:ring-orange-500/10
+                    "
+                  />
+
+                </div>
+
+
+                {/* EMAIL */}
+
+                <div
+                  data-aos="fade-up"
+                  data-aos-duration="650"
+                  data-aos-delay="550"
+                >
+
+                  <label
+                    htmlFor="contact-email"
+                    className="
+                      mb-2
+                      block
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.15em]
+                      text-zinc-600
+                    "
+                  >
+                    Email
+                  </label>
+
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                    autoComplete="email"
+                    className="
+                      w-full
+                      rounded-xl
+                      border
+                      border-white/[0.08]
+                      bg-black/10
+                      px-4
+                      py-3.5
+                      text-sm
+                      text-white
+                      outline-none
+                      placeholder:text-zinc-700
+                      transition-all
+                      duration-300
+                      hover:border-white/[0.12]
+                      focus:border-orange-500/50
+                      focus:bg-white/[0.025]
+                      focus:ring-2
+                      focus:ring-orange-500/10
+                    "
+                  />
+
+                </div>
 
               </div>
 
@@ -550,16 +970,22 @@ const Contact = () => {
                   MESSAGE
               ================================================== */}
 
-              <div>
+              <div
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="650"
+              >
 
                 <label
                   htmlFor="contact-message"
                   className="
                     mb-2
                     block
-                    text-xs
+                    text-[10px]
                     font-medium
-                    text-zinc-400
+                    uppercase
+                    tracking-[0.15em]
+                    text-zinc-600
                   "
                 >
                   Message
@@ -568,7 +994,7 @@ const Contact = () => {
                 <textarea
                   id="contact-message"
                   name="message"
-                  rows="6"
+                  rows="7"
                   placeholder="Tell me a little about your project..."
                   required
                   className="
@@ -577,9 +1003,9 @@ const Contact = () => {
                     rounded-xl
                     border
                     border-white/[0.08]
-                    bg-white/[0.025]
+                    bg-black/10
                     px-4
-                    py-3
+                    py-3.5
                     text-sm
                     leading-6
                     text-white
@@ -587,8 +1013,9 @@ const Contact = () => {
                     placeholder:text-zinc-700
                     transition-all
                     duration-300
+                    hover:border-white/[0.12]
                     focus:border-orange-500/50
-                    focus:bg-white/[0.035]
+                    focus:bg-white/[0.025]
                     focus:ring-2
                     focus:ring-orange-500/10
                   "
@@ -603,6 +1030,7 @@ const Contact = () => {
 
               {status === 'config-error' && (
                 <div
+                  data-aos="fade-up"
                   className="
                     rounded-xl
                     border
@@ -611,6 +1039,7 @@ const Contact = () => {
                     px-4
                     py-3
                     text-xs
+                    leading-5
                     text-red-400
                   "
                 >
@@ -622,6 +1051,7 @@ const Contact = () => {
 
               {status === 'success' && (
                 <div
+                  data-aos="fade-up"
                   className="
                     rounded-xl
                     border
@@ -630,6 +1060,7 @@ const Contact = () => {
                     px-4
                     py-3
                     text-sm
+                    leading-5
                     text-emerald-400
                   "
                 >
@@ -640,6 +1071,7 @@ const Contact = () => {
 
               {status === 'error' && (
                 <div
+                  data-aos="fade-up"
                   className="
                     rounded-xl
                     border
@@ -648,6 +1080,7 @@ const Contact = () => {
                     px-4
                     py-3
                     text-sm
+                    leading-5
                     text-red-400
                   "
                 >
@@ -659,6 +1092,7 @@ const Contact = () => {
 
               {status === 'network-error' && (
                 <div
+                  data-aos="fade-up"
                   className="
                     rounded-xl
                     border
@@ -667,6 +1101,7 @@ const Contact = () => {
                     px-4
                     py-3
                     text-sm
+                    leading-5
                     text-red-400
                   "
                 >
@@ -677,85 +1112,143 @@ const Contact = () => {
 
 
               {/* =================================================
-                  SUBMIT BUTTON
+                  BUTTON
               ================================================== */}
 
-              <button
-                type="submit"
-                disabled={status === 'sending'}
+              <div
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="750"
+                className="pt-1"
+              >
+
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="
+                    group
+                    inline-flex
+                    w-full
+                    items-center
+                    justify-center
+                    gap-2.5
+                    rounded-xl
+                    bg-orange-500
+                    px-6
+                    py-3.5
+                    text-sm
+                    font-semibold
+                    text-black
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:bg-orange-400
+                    hover:shadow-xl
+                    hover:shadow-orange-500/15
+                    disabled:cursor-not-allowed
+                    disabled:opacity-60
+                    focus:outline-none
+                    focus-visible:ring-2
+                    focus-visible:ring-orange-500
+                    focus-visible:ring-offset-2
+                    focus-visible:ring-offset-[#060608]
+                  "
+                >
+
+                  {status === 'sending' ? (
+                    <>
+                      <span
+                        className="
+                          h-4
+                          w-4
+                          animate-spin
+                          rounded-full
+                          border-2
+                          border-black/30
+                          border-t-black
+                        "
+                      />
+
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+
+                      <span
+                        aria-hidden="true"
+                        className="
+                          transition-transform
+                          duration-300
+                          group-hover:translate-x-1
+                        "
+                      >
+                        →
+                      </span>
+                    </>
+                  )}
+
+                </button>
+
+              </div>
+
+
+              {/* Privacy note */}
+
+              <div
+                data-aos="fade"
+                data-aos-duration="700"
+                data-aos-delay="850"
                 className="
-                  group
-                  inline-flex
-                  w-full
+                  flex
                   items-center
                   justify-center
                   gap-2
-                  rounded-xl
-                  bg-orange-500
-                  px-6
-                  py-3.5
-                  text-sm
-                  font-semibold
-                  text-black
-                  transition-all
-                  duration-300
-                  hover:-translate-y-0.5
-                  hover:bg-orange-400
-                  hover:shadow-lg
-                  hover:shadow-orange-500/20
-                  disabled:cursor-not-allowed
-                  disabled:opacity-60
-                  focus:outline-none
-                  focus-visible:ring-2
-                  focus-visible:ring-orange-500
-                  focus-visible:ring-offset-2
-                  focus-visible:ring-offset-[#060608]
+                  pt-1
                 "
               >
 
-                {status === 'sending' ? (
-                  <>
-                    <span
-                      className="
-                        h-4
-                        w-4
-                        animate-spin
-                        rounded-full
-                        border-2
-                        border-black/30
-                        border-t-black
-                      "
-                    />
+                <span
+                  aria-hidden="true"
+                  className="h-1 w-1 rounded-full bg-orange-500/50"
+                />
 
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Send Message
+                <p className="text-[10px] text-zinc-700">
+                  Your message will be sent securely.
+                </p>
 
-                    <span
-                      aria-hidden="true"
-                      className="
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    >
-                      →
-                    </span>
-                  </>
-                )}
-
-              </button>
-
-
-              <p className="text-center text-[10px] text-zinc-700">
-                Your message will be sent securely.
-              </p>
+              </div>
 
             </form>
 
           </div>
+
+        </div>
+
+
+        {/* =======================================================
+            BOTTOM FOOTER
+        ======================================================== */}
+
+        <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="400"
+          className="
+            mt-8
+            flex
+            flex-col
+            gap-3
+            border-t
+            border-white/[0.06]
+            pt-5
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+          "
+        >
+
+         
 
         </div>
 

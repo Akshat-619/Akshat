@@ -3,3 +3,16 @@
 @theme {
   --color-body-bg: #060608;
 }
+/* Hide scrollbar but keep scrolling */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}

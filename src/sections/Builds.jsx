@@ -83,9 +83,11 @@ const Builds = () => {
         "
       >
 
-        {/* Soft orange glow */}
+        {/* Main orange glow */}
 
         <div
+          data-aos="fade"
+          data-aos-duration="1500"
           className="
             absolute
             left-1/2
@@ -99,9 +101,29 @@ const Builds = () => {
           "
         />
 
-        {/* Subtle dot texture */}
+        {/* Secondary glow */}
 
         <div
+          data-aos="fade"
+          data-aos-duration="1800"
+          data-aos-delay="300"
+          className="
+            absolute
+            -right-40
+            top-[40%]
+            h-72
+            w-72
+            rounded-full
+            bg-orange-500/[0.015]
+            blur-[110px]
+          "
+        />
+
+        {/* Dot texture */}
+
+        <div
+          data-aos="fade"
+          data-aos-duration="2000"
           className="
             absolute
             inset-0
@@ -142,7 +164,16 @@ const Builds = () => {
 
             {/* Section Label */}
 
-            <div className="mb-5 flex items-center gap-3">
+            <div
+              data-aos="fade-right"
+              data-aos-duration="700"
+              className="
+                mb-5
+                flex
+                items-center
+                gap-3
+              "
+            >
 
               <span
                 aria-hidden="true"
@@ -172,6 +203,9 @@ const Builds = () => {
 
             <h2
               id="builds-heading"
+              data-aos="fade-up"
+              data-aos-duration="850"
+              data-aos-delay="100"
               className="
                 text-3xl
                 font-semibold
@@ -182,15 +216,20 @@ const Builds = () => {
               "
             >
               Work I've
+
               <span className="text-zinc-500">
                 {' '}built.
               </span>
+
             </h2>
 
 
             {/* Description */}
 
             <p
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="220"
               className="
                 mt-5
                 max-w-xl
@@ -208,9 +247,14 @@ const Builds = () => {
           </div>
 
 
-          {/* Project Counter */}
+          {/* =====================================================
+              PROJECT COUNTER
+          ====================================================== */}
 
           <div
+            data-aos="fade-left"
+            data-aos-duration="750"
+            data-aos-delay="250"
             className="
               flex
               items-baseline
@@ -259,6 +303,10 @@ const Builds = () => {
           ====================================================== */}
 
           <article
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            data-aos-anchor-placement="top-bottom"
             className="
               group
               relative
@@ -282,6 +330,10 @@ const Builds = () => {
             ================================================== */}
 
             <div
+              data-aos="zoom-in"
+              data-aos-duration="1000"
+              data-aos-delay="250"
+              data-aos-anchor-placement="top-bottom"
               className="
                 relative
                 h-64
@@ -321,6 +373,9 @@ const Builds = () => {
 
               <div
                 aria-hidden="true"
+                data-aos="fade-up"
+                data-aos-duration="900"
+                data-aos-delay="400"
                 className="
                   absolute
                   inset-0
@@ -339,6 +394,9 @@ const Builds = () => {
               {/* Project number */}
 
               <span
+                data-aos="fade-right"
+                data-aos-duration="700"
+                data-aos-delay="550"
                 className="
                   absolute
                   bottom-5
@@ -356,6 +414,27 @@ const Builds = () => {
               >
                 {project.number}
               </span>
+
+
+              {/* Image corner accent */}
+
+              <span
+                aria-hidden="true"
+                data-aos="fade-right"
+                data-aos-duration="700"
+                data-aos-delay="600"
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  h-px
+                  w-20
+                  bg-orange-500/70
+                  transition-all
+                  duration-500
+                  group-hover:w-32
+                "
+              />
 
             </div>
 
@@ -385,6 +464,9 @@ const Builds = () => {
                 {/* Project Type */}
 
                 <p
+                  data-aos="fade-right"
+                  data-aos-duration="650"
+                  data-aos-delay="150"
                   className="
                     mb-2
                     text-[9px]
@@ -401,6 +483,9 @@ const Builds = () => {
                 {/* Project Title */}
 
                 <h3
+                  data-aos="fade-up"
+                  data-aos-duration="750"
+                  data-aos-delay="220"
                   className="
                     text-2xl
                     font-semibold
@@ -419,6 +504,9 @@ const Builds = () => {
                 {/* Description */}
 
                 <p
+                  data-aos="fade-up"
+                  data-aos-duration="750"
+                  data-aos-delay="300"
                   className="
                     mt-4
                     max-w-2xl
@@ -432,7 +520,9 @@ const Builds = () => {
                 </p>
 
 
-                {/* Technologies */}
+                {/* =================================================
+                    TECHNOLOGIES
+                ================================================== */}
 
                 <div
                   className="
@@ -443,9 +533,13 @@ const Builds = () => {
                   "
                 >
 
-                  {project.technologies.map((technology) => (
+                  {project.technologies.map((technology, index) => (
+
                     <span
                       key={technology}
+                      data-aos="fade-up"
+                      data-aos-duration="550"
+                      data-aos-delay={400 + index * 100}
                       className="
                         rounded-full
                         border
@@ -463,6 +557,7 @@ const Builds = () => {
                     >
                       {technology}
                     </span>
+
                   ))}
 
                 </div>
@@ -474,12 +569,18 @@ const Builds = () => {
                   VIEW DEMO
               ================================================== */}
 
-              <div className="md:pb-1">
+              <div
+                data-aos="fade-left"
+                data-aos-duration="750"
+                data-aos-delay="400"
+                className="md:pb-1"
+              >
 
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`View ${project.title} demo`}
                   className="
                     group/demo
                     inline-flex
@@ -527,6 +628,9 @@ const Builds = () => {
         ======================================================== */}
 
         <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="250"
           className="
             mt-8
             flex

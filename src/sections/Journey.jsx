@@ -1,6 +1,14 @@
 import React from 'react'
 
 const Journey = () => {
+  const areas = [
+    'UI Development',
+    'Responsive Design',
+    'JavaScript',
+    'ERP Interfaces',
+    'Figma to UI',
+  ]
+
   return (
     <section
       id="journey"
@@ -17,13 +25,24 @@ const Journey = () => {
       "
     >
 
-      {/* Background */}
+      {/* =========================================================
+          BACKGROUND
+      ========================================================== */}
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+        "
       >
+
+        {/* Main ambient glow */}
+
         <div
+          data-aos="fade"
+          data-aos-duration="1800"
           className="
             absolute
             left-1/2
@@ -37,7 +56,29 @@ const Journey = () => {
           "
         />
 
+        {/* Secondary glow */}
+
         <div
+          data-aos="fade"
+          data-aos-duration="2200"
+          data-aos-delay="300"
+          className="
+            absolute
+            -right-32
+            top-1/2
+            h-72
+            w-72
+            rounded-full
+            bg-orange-500/[0.012]
+            blur-[120px]
+          "
+        />
+
+        {/* Dot grid */}
+
+        <div
+          data-aos="fade"
+          data-aos-duration="2500"
           className="
             absolute
             inset-0
@@ -46,22 +87,45 @@ const Journey = () => {
             opacity-15
           "
         />
+
       </div>
 
 
-      {/* Content */}
+      {/* =========================================================
+          CONTENT
+      ========================================================== */}
 
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-6xl">
 
-        {/* Header */}
+
+        {/* =======================================================
+            HEADER
+        ======================================================== */}
 
         <div className="max-w-2xl">
 
-          <div className="mb-5 flex items-center gap-3">
+          {/* Section label */}
+
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            data-aos-offset="100"
+            className="
+              mb-5
+              flex
+              items-center
+              gap-3
+            "
+          >
 
             <span
               aria-hidden="true"
-              className="h-px w-8 bg-orange-500"
+              className="
+                h-px
+                w-8
+                origin-left
+                bg-orange-500
+              "
             />
 
             <p
@@ -79,8 +143,14 @@ const Journey = () => {
           </div>
 
 
+          {/* Heading */}
+
           <h2
             id="journey-heading"
+            data-aos="fade-up"
+            data-aos-duration="850"
+            data-aos-delay="100"
+            data-aos-offset="100"
             className="
               text-3xl
               font-semibold
@@ -91,13 +161,21 @@ const Journey = () => {
             "
           >
             Where I've
+
             <span className="text-zinc-500">
               {' '}worked.
             </span>
+
           </h2>
 
 
+          {/* Description */}
+
           <p
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="220"
+            data-aos-offset="100"
             className="
               mt-5
               max-w-xl
@@ -114,11 +192,17 @@ const Journey = () => {
         </div>
 
 
-        {/* Experience */}
+        {/* =======================================================
+            EXPERIENCE
+        ======================================================== */}
 
         <div className="mt-16">
 
           <article
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            data-aos-offset="120"
             className="
               group
               relative
@@ -131,19 +215,27 @@ const Journey = () => {
               duration-500
               hover:border-orange-500/20
               hover:bg-white/[0.025]
+              hover:shadow-2xl
+              hover:shadow-black/10
             "
           >
 
-            {/* Orange accent */}
+            {/* =================================================
+                ORANGE ACCENT
+            ================================================== */}
 
             <span
               aria-hidden="true"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+              data-aos-delay="350"
               className="
                 absolute
                 left-0
                 top-0
                 h-full
                 w-px
+                origin-top
                 bg-orange-500/40
                 transition-all
                 duration-500
@@ -151,6 +243,10 @@ const Journey = () => {
               "
             />
 
+
+            {/* =================================================
+                CARD CONTENT
+            ================================================== */}
 
             <div
               className="
@@ -164,9 +260,19 @@ const Journey = () => {
               "
             >
 
-              {/* Date */}
+              {/* =================================================
+                  DATE
+              ================================================== */}
 
-              <div>
+              <div
+                data-aos="fade-right"
+                data-aos-duration="750"
+                data-aos-delay="250"
+                className="
+                  relative
+                  md:pt-1
+                "
+              >
 
                 <p
                   className="
@@ -179,9 +285,27 @@ const Journey = () => {
                   NOV 2025
                 </p>
 
-                <div className="mt-2 h-px w-6 bg-orange-500/40" />
+
+                {/* Date connector */}
+
+                <div
+                  data-aos="fade-right"
+                  data-aos-duration="500"
+                  data-aos-delay="500"
+                  className="
+                    mt-2
+                    h-px
+                    w-6
+                    origin-left
+                    bg-orange-500/40
+                  "
+                />
+
 
                 <p
+                  data-aos="fade-right"
+                  data-aos-duration="700"
+                  data-aos-delay="550"
                   className="
                     mt-2
                     font-mono
@@ -196,13 +320,20 @@ const Journey = () => {
               </div>
 
 
-              {/* Experience Details */}
+              {/* =================================================
+                  EXPERIENCE DETAILS
+              ================================================== */}
 
               <div>
 
-                {/* Meta */}
+                {/* =================================================
+                    META
+                ================================================== */}
 
                 <div
+                  data-aos="fade-right"
+                  data-aos-duration="700"
+                  data-aos-delay="300"
                   className="
                     flex
                     flex-wrap
@@ -242,9 +373,14 @@ const Journey = () => {
                 </div>
 
 
-                {/* Role */}
+                {/* =================================================
+                    ROLE
+                ================================================== */}
 
                 <h3
+                  data-aos="fade-up"
+                  data-aos-duration="850"
+                  data-aos-delay="400"
                   className="
                     mt-5
                     text-2xl
@@ -261,23 +397,36 @@ const Journey = () => {
                 </h3>
 
 
-                {/* Company */}
+                {/* =================================================
+                    COMPANY
+                ================================================== */}
 
                 <p
+                  data-aos="fade-up"
+                  data-aos-duration="700"
+                  data-aos-delay="500"
                   className="
                     mt-2
                     text-sm
                     font-medium
                     text-zinc-500
+                    transition-colors
+                    duration-300
+                    group-hover:text-zinc-400
                   "
                 >
                   MasterSoft ERP Solutions
                 </p>
 
 
-                {/* Description */}
+                {/* =================================================
+                    DESCRIPTION
+                ================================================== */}
 
                 <p
+                  data-aos="fade-up"
+                  data-aos-duration="850"
+                  data-aos-delay="600"
                   className="
                     mt-6
                     max-w-2xl
@@ -295,7 +444,9 @@ const Journey = () => {
                 </p>
 
 
-                {/* Areas */}
+                {/* =================================================
+                    AREAS
+                ================================================== */}
 
                 <div
                   className="
@@ -306,15 +457,12 @@ const Journey = () => {
                   "
                 >
 
-                  {[
-                    'UI Development',
-                    'Responsive Design',
-                    'JavaScript',
-                    'ERP Interfaces',
-                    'Figma to UI',
-                  ].map((item) => (
+                  {areas.map((item, index) => (
                     <span
                       key={item}
+                      data-aos="fade-up"
+                      data-aos-duration="600"
+                      data-aos-delay={700 + index * 100}
                       className="
                         rounded-full
                         border
@@ -326,6 +474,9 @@ const Journey = () => {
                         text-zinc-600
                         transition-all
                         duration-300
+                        hover:-translate-y-0.5
+                        hover:border-orange-500/30
+                        hover:text-orange-500
                         group-hover:border-white/[0.12]
                         group-hover:text-zinc-500
                       "
@@ -340,14 +491,43 @@ const Journey = () => {
 
             </div>
 
+
+            {/* =================================================
+                CARD BOTTOM ACCENT
+            ================================================== */}
+
+            <div
+              aria-hidden="true"
+              data-aos="fade-right"
+              data-aos-duration="900"
+              data-aos-delay="500"
+              className="
+                absolute
+                bottom-0
+                left-0
+                h-px
+                w-0
+                bg-orange-500/50
+                transition-all
+                duration-700
+                group-hover:w-24
+              "
+            />
+
           </article>
 
         </div>
 
 
-        {/* Bottom line */}
+        {/* =======================================================
+            BOTTOM LINE
+        ======================================================== */}
 
         <div
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="350"
+          data-aos-offset="80"
           className="
             mt-8
             flex
@@ -360,6 +540,9 @@ const Journey = () => {
         >
 
           <span
+            data-aos="fade-right"
+            data-aos-duration="600"
+            data-aos-delay="450"
             className="
               text-[9px]
               uppercase
@@ -370,7 +553,11 @@ const Journey = () => {
             Professional experience
           </span>
 
+
           <span
+            data-aos="fade-left"
+            data-aos-duration="600"
+            data-aos-delay="450"
             className="
               font-mono
               text-[9px]

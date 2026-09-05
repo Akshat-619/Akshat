@@ -1,21 +1,16 @@
 import React, { useState } from 'react'
-import HCaptcha from '@hcaptcha/react-hcaptcha'
 
 const Contact = () => {
-  const [captchaToken, setCaptchaToken] = useState('')
   const [status, setStatus] = useState('idle')
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    if (!import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+
+    if (!accessKey) {
       console.error('Web3Forms access key is missing.')
       setStatus('config-error')
-      return
-    }
-
-    if (!captchaToken) {
-      setStatus('captcha')
       return
     }
 
@@ -24,11 +19,7 @@ const Contact = () => {
     const form = event.currentTarget
     const formData = new FormData(form)
 
-    // Web3Forms configuration
-    formData.append(
-      'access_key',
-      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
-    )
+    formData.append('access_key', accessKey)
 
     formData.append(
       'subject',
@@ -38,12 +29,6 @@ const Contact = () => {
     formData.append(
       'from_name',
       'Akshat Sharma Portfolio'
-    )
-
-    // hCaptcha response
-    formData.set(
-      'h-captcha-response',
-      captchaToken
     )
 
     try {
@@ -61,7 +46,6 @@ const Contact = () => {
 
       if (data.success) {
         setStatus('success')
-        setCaptchaToken('')
         form.reset()
       } else {
         console.error(
@@ -103,6 +87,8 @@ const Contact = () => {
         className="pointer-events-none absolute inset-0"
       >
 
+        {/* Ambient glow */}
+
         <div
           className="
             absolute
@@ -117,9 +103,12 @@ const Contact = () => {
           "
         />
 
+        {/* Dot texture */}
+
         <div
           className="
-            absolute inset-0
+            absolute
+            inset-0
             bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.035)_1px,transparent_1px)]
             [background-size:32px_32px]
             opacity-20
@@ -140,6 +129,8 @@ const Contact = () => {
         ======================================================== */}
 
         <div className="mb-14 max-w-2xl">
+
+          {/* Section label */}
 
           <div className="mb-5 flex items-center gap-3">
 
@@ -163,6 +154,8 @@ const Contact = () => {
           </div>
 
 
+          {/* Heading */}
+
           <h2
             id="contact-heading"
             className="
@@ -180,6 +173,8 @@ const Contact = () => {
             </span>
           </h2>
 
+
+          {/* Description */}
 
           <p
             className="
@@ -284,7 +279,7 @@ const Contact = () => {
               {/* Email */}
 
               <a
-                href="mailto:official.akshatsharma04@gmail.com"
+                href="mailto:work.akshatsharma04@gmail.com"
                 className="
                   group
                   block
@@ -320,7 +315,7 @@ const Contact = () => {
                     sm:break-normal
                   "
                 >
-                  official.akshatsharma04@gmail.com
+                  work.akshatsharma04@gmail.com
                 </span>
 
               </a>
@@ -451,18 +446,9 @@ const Contact = () => {
               className="space-y-5"
             >
 
-              {/* Honeypot */}
-
-              <input
-                type="checkbox"
-                name="botcheck"
-                className="hidden"
-                tabIndex="-1"
-                autoComplete="off"
-              />
-
-
-              {/* Name */}
+              {/* =================================================
+                  NAME
+              ================================================== */}
 
               <div>
 
@@ -510,7 +496,9 @@ const Contact = () => {
               </div>
 
 
-              {/* Email */}
+              {/* =================================================
+                  EMAIL
+              ================================================== */}
 
               <div>
 
@@ -558,7 +546,9 @@ const Contact = () => {
               </div>
 
 
-              {/* Message */}
+              {/* =================================================
+                  MESSAGE
+              ================================================== */}
 
               <div>
 
@@ -608,59 +598,8 @@ const Contact = () => {
 
 
               {/* =================================================
-                  CAPTCHA
-              ================================================== */}
-
-              <div
-                className="
-                  flex
-                  justify-center
-                  overflow-hidden
-                  rounded-xl
-                  sm:justify-start
-                "
-              >
-
-                <HCaptcha
-                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                  reCaptchaCompat={false}
-                  onVerify={(token) => {
-                    setCaptchaToken(token)
-                    setStatus('idle')
-                  }}
-                  onExpire={() => {
-                    setCaptchaToken('')
-                  }}
-                  onError={() => {
-                    setCaptchaToken('')
-                    setStatus('captcha')
-                  }}
-                />
-
-              </div>
-
-
-              {/* =================================================
                   STATUS
               ================================================== */}
-
-              {status === 'captcha' && (
-                <div
-                  className="
-                    rounded-xl
-                    border
-                    border-orange-500/20
-                    bg-orange-500/[0.04]
-                    px-4
-                    py-3
-                    text-xs
-                    text-orange-400
-                  "
-                >
-                  Please complete the CAPTCHA before sending your message.
-                </div>
-              )}
-
 
               {status === 'config-error' && (
                 <div
@@ -712,8 +651,8 @@ const Contact = () => {
                     text-red-400
                   "
                 >
-                  Web3Forms rejected the message. Please check your
-                  Web3Forms configuration and try again.
+                  Something went wrong while sending your message.
+                  Please try again or contact me directly by email.
                 </div>
               )}
 
@@ -731,8 +670,8 @@ const Contact = () => {
                     text-red-400
                   "
                 >
-                  Couldn't connect to the email service. Please check
-                  your internet connection and try again.
+                  Couldn't connect to the email service.
+                  Please check your connection and try again.
                 </div>
               )}
 

@@ -9,12 +9,12 @@ import Contact from './sections/Contact'
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import CustomCursor from './components/CustomCursor'
+// import CustomCursor from './components/CustomCursor'
 
 const App = () => {
   return (
-    <div className='min-h-screen cursor-none bg-body-bg'>
-      <CustomCursor/>
+    <div className='min-h-screen bg-body-bg'>
+      {/* <CustomCursor/> */}
       <Navbar/>
       <Hero/>
       <About/>
